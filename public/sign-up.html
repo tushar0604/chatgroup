@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Sign Up</title>
+        <link rel="stylesheet" href="signup.css">
+    </head>
+    <body>
+        <div id="main">
+            <div id="form-image">
+                <form id="form" style="text-align:center;">
+                    <h1 style="color:rgb(23, 165, 137);">Create Account</h1>
+                    <label for="name"></label>
+                    <input class="input" type="text" id="name" name="name" placeholder="Name"><br>
+                    <label for="email"></label>
+                    <input class="input" type="text" id="email" name="email" placeholder="Email"><br>
+                    <label for="phone"></label>
+                    <input class="input" type="text" id="phone" name="phone_no" placeholder="Phone No"><br>
+                    <label for="password"></label>
+                    <input class="input" type="password" id="password" name="password" placeholder="Password"><br>
+                    <input type="checkbox" id="aggrement" name="aggrement">
+                    <label style="font-size: 1.2rem; margin: 3px;" for="aggrement">I agree to the <span style="color:rgb(23, 165, 137); ">Terms</span> and <span style="color:rgb(23, 165, 137);">Privacy Policy</span></label><br>
+                    <button type="submit">Sign Up</button>
+                    <a href="./sign-in.html" id="sign-in">Sign In</a>
+                </form>
+            </div>
+        </div>
+    </body>
+    <script src="signup.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</html>
