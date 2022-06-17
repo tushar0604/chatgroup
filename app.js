@@ -6,6 +6,8 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 const sequelize = require('./util/database')
+const users = require('./models/user')
+const messages = require('./models/message')
 // var cors = require('cors')
 
 const app = express()
@@ -24,7 +26,27 @@ app.use((req,res) => {
 })
 // app.use(cors());
 
-sequelize.sync()
+users.hasMany(messages, {
+    foreignKey: 'senderId',
+    as: 'OutgoingMessages'
+});
+users.hasMany(messages, {
+    foreignKey: 'receiverId',
+    as: 'IncomingMessages'
+});
+messages.belongsTo(users, {
+    foreignKey: "senderId",
+    as: 'Sender'
+});
+messages.belongsTo(users, {
+    foreignKey: "receiverId",
+    as: 'Receiver'
+});
+
+
+sequelize
+    .sync()
+    // .sync({alter:true})
     .then(
         app.listen(3000)
     )

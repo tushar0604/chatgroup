@@ -1,8 +1,10 @@
 const users = require('../models/user')
+const message = require('../models/message')
 const bcrypt = require('bcryptjs')
 const path = require('path')
 const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
+const Sequelize = require('sequelize');
 dotenv.config()
 
 function generateAccessToken(username) {
@@ -60,4 +62,27 @@ exports.sign_in = (req,res,next)=>{
         }
     })
     .catch(err => res.status(400).json({message:err}))
+}
+
+exports.allMessage = async(req,res,next) =>{
+    await message.findAll({
+        where: Sequelize.or(
+            {senderId:req.body.sender,receiverId:req.body.receiver},
+            {senderId:req.body.receiver,receiverId:req.body.sender}
+        )
+    })
+    .then(response => {
+        console.log(response)
+        res.json(response)
+    })
+}
+
+exports.sendMessage = async(req,res,next) =>{
+    await req.sender.createOutgoingMessage({
+        message:req.body.message,
+        receiverId: req.body.receiver
+    })
+    .then(response => {
+        res.json(response)
+    })
 }
