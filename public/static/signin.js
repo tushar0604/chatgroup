@@ -16,7 +16,8 @@ async function handleSubmit(event) {
     await axios.post('http://localhost:3000/home/sign-in',obj)
     .then(response => {
         if (response.status===200){
-            window.location.href = '/main/home';
+            sessionStorage.setItem('token', response.data.token)
+            window.location.href = '../chat.html';
         }else{
             console.log(response.status)
         }

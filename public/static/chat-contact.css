@@ -100,3 +100,33 @@ body {
     border-radius: 20px;
     padding: 5px;
   }
+
+  /* contact list */
+
+  .contact{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .contact div{
+    color: #E9EBEE;
+    border-radius: 10px;
+    padding: 8px;
+    background-color: rgb(31, 97, 141);
+    width: 80%;
+    text-align: center;
+    margin: 5px;
+    transition: width 0.250s, padding 0.250s;
+    transition-timing-function: ease-in-out;
+  }
+
+  .contact div:hover{
+    width: 85%;
+    padding: 12px;
+    cursor: pointer;
+    transition: width 0.5s, padding 0.5s;
+    transition-timing-function: ease-in-out;
+  }
